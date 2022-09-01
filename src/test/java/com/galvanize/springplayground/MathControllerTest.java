@@ -13,19 +13,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(HelloController.class)
+@WebMvcTest(MathController.class)
 
-public class HelloControllerTest {
+public class MathControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void testHomepage() throws Exception {
-        RequestBuilder request = MockMvcRequestBuilders.get("/");
-
-        this.mvc.perform(request)
-                .andExpect(status().isOk())
-                .andExpect(content().string("Hello from Spring!"));
+    public void testMathPiPage() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/pi");
+        this.mvc.perform(request).andExpect(status().isOk())
+                .andExpect(content().string("3.141592653589793"));
     }
 }
