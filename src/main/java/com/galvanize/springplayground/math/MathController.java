@@ -32,7 +32,7 @@ public class MathController {
     }
 
     @RequestMapping ("/math/volume/{length}/{width}/{height}")
-    public String returnVolume(@PathVariable int length, @PathVariable int width, @PathVariable int height) {
+    public String calcVolume(@PathVariable int length, @PathVariable int width, @PathVariable int height) {
         int volume = length * width * height;
         return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volume);
     }

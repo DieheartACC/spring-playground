@@ -10,8 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -65,5 +64,13 @@ public class MathControllerTest {
         this.mvc.perform(get("/math/volume/3/4/5"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("The volume of a 3x4x5 rectangle is 60"));
+
+        this.mvc.perform(post("/math/volume/42/56/79"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 42x56x79 rectangle is 185808"));
+//
+        this.mvc.perform(patch("/math/volume/6/7/8"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 6x7x8 rectangle is 336"));
     }
 }
