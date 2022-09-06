@@ -33,24 +33,37 @@ public class MathControllerTest {
     @Test
     public void calculateShouldReturnCorrectOperation() throws Exception {
         this.mvc.perform(get("/math/calculate?operation=add&x=4&y=6"))
+                .andExpect(status().isOk())
                 .andExpect(content().string("4 + 6 = 10"));
 
         this.mvc.perform(get("/math/calculate?operation=multiply&x=4&y=6"))
+                .andExpect(status().isOk())
                 .andExpect(content().string("4 * 6 = 24"));
 //
         this.mvc.perform(get("/math/calculate?operation=subtract&x=4&y=6"))
+                .andExpect(status().isOk())
                 .andExpect(content().string("4 - 6 = -2"));
 //
         this.mvc.perform(get("/math/calculate?operation=divide&x=30&y=5"))
+                .andExpect(status().isOk())
                 .andExpect(content().string("30 / 5 = 6"));
 //
         this.mvc.perform(get("/math/calculate?x=30&y=5"))
+                .andExpect(status().isOk())
                 .andExpect(content().string("30 + 5 = 35"));
     }
 
     @Test
     public void postSumAddsTheInput() throws Exception {
         this.mvc.perform(post("/math/sum?n=4&n=5&n=6"))
+                .andExpect(status().isOk())
                 .andExpect(content().string("4 + 5 + 6 = 15"));
+    }
+
+    @Test
+    public void requestToVolumeCalculatesVolume() throws Exception {
+        this.mvc.perform(get("/math/volume/3/4/5"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 3x4x5 rectangle is 60"));
     }
 }
