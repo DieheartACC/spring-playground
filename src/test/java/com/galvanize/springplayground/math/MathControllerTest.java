@@ -1,5 +1,6 @@
-package com.galvanize.springplayground;
+package com.galvanize.springplayground.math;
 
+import com.galvanize.springplayground.math.MathController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
