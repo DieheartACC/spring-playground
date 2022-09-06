@@ -22,7 +22,7 @@ public class MathControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void testMathPiPage() throws Exception {
+    public void getPiReturnsValidPiString() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders.get("/math/pi");
         this.mvc.perform(request).andExpect(status().isOk())
                 .andExpect(content().string("3.141592653589793"));
