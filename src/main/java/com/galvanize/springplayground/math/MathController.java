@@ -20,9 +20,6 @@ public class MathController {
     @GetMapping("/math/calculate")
     public String getCalculation(@RequestParam (required = false, defaultValue = "add") String operation,
                                     int x, int y) {
-//        myMathService.setOperation(operation);
-//        myMathService.setX(x);
-//        myMathService.setY(y);
 
         return myMathService.calculate(operation, x, y);
     }
@@ -34,41 +31,30 @@ public class MathController {
 
     @RequestMapping ("/math/volume/{length}/{width}/{height}")
     public String calcVolume(@PathVariable int length, @PathVariable int width, @PathVariable int height) {
-        int volume = length * width * height;
-        return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volume);
+        return myMathService.calcVolume(length, width, height);
     }
 
     @PostMapping("/math/area")
     public String calcArea(@RequestParam Map<String, String> contentMap) {
-        StringBuilder sb = new StringBuilder();
-        float result;
+        // The controller should only be responsible for determining if it is a rectangle or circle
+        // to the MathService
         // Switch Case based on what type we have
         switch (contentMap.get("type")) {
             case "circle":
-                result = Float.parseFloat(getPi()) *
-                        (Float.parseFloat(contentMap.get("radius")) * Float.parseFloat(contentMap.get("radius")));
-                sb.append(String.format("Area of a circle with a radius of %.0f is %.5f",
-                        Float.parseFloat(contentMap.get("radius")),
-                        result));
-                break;
+                return myMathService.calcCircArea(Float.parseFloat(contentMap.get("radius")));
 
             case "rectangle":
                 if (contentMap.get("radius") != null) {
-                    sb.append("Invalid");
+                    return ("Invalid");
                 }
 
                 else {
-                    result = Float.parseFloat(contentMap.get("width")) * Float.parseFloat(contentMap.get("height"));
-                    sb.append(String.format("Area of a %.0fx%.0f rectangle is %.0f",
-                            Float.parseFloat(contentMap.get("width")),
-                            Float.parseFloat(contentMap.get("height")),
-                            result));
+                    return myMathService.calcRectArea(Integer.parseInt(contentMap.get("width")),
+                            Integer.parseInt(contentMap.get("height")));
                 }
-                break;
 
             default:
-                break;
+                return "";
         }
-        return sb.toString();
     }
 }

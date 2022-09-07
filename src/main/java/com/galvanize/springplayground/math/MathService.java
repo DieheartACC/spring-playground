@@ -6,41 +6,6 @@ import java.util.List;
 
 // Refactor to remove data fields
 public class MathService {
-//    private String operation;
-//    private int x;
-//    private int y;
-
-//    MultiValueMap<String, String> query;
-
-    // Constructor to default operation
-//    public MathService(String operation) {
-//        this.operation = "add";
-//    }
-
-//    public String getOperation() {
-//        return operation;
-//    }
-//
-//    public void setOperation(String operation) {
-//        this.operation = operation;
-//    }
-//
-//    public int getX() {
-//        return x;
-//    }
-//
-//    public void setX(int x) {
-//        this.x = x;
-//    }
-//
-//    public int getY() {
-//        return y;
-//    }
-//
-//    public void setY(int y) {
-//        this.y = y;
-//    }
-
     public String calculate(String operation, int x, int y) {
         int result = 0;
         switch (operation) {
@@ -101,5 +66,34 @@ public class MathService {
 
         sbResult.append(sumResult);
         return sbResult.toString();
+    }
+
+    public String calcVolume(int length, int width, int height) {
+        int volume = length * width * height;
+        return String.format("The volume of a %dx%dx%d rectangle is %d", length, width, height, volume);
+    }
+
+
+    public String calcCircArea(float radius) {
+        StringBuilder sb = new StringBuilder();
+        float result;
+
+        result = 3.141592653589793f * (radius * radius);
+
+        sb.append(String.format("Area of a circle with a radius of %.0f is %.5f",
+                radius,
+                result));
+
+        return sb.toString();
+    }
+
+    public String calcRectArea(int width, int height) {
+        StringBuilder sb = new StringBuilder();
+        int result;
+
+        result = width * height;
+        sb.append(String.format("Area of a %dx%d rectangle is %d", width, height, result));
+
+        return sb.toString();
     }
 }
