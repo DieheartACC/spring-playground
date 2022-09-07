@@ -3,8 +3,6 @@ package com.galvanize.springplayground.math;
 import org.springframework.util.MultiValueMap;
 
 import java.util.List;
-
-// Refactor to remove data fields
 public class MathService {
     public String calculate(String operation, int x, int y) {
         int result = 0;
@@ -39,10 +37,12 @@ public class MathService {
     public String sum(MultiValueMap<String, String> query) {
         // Instead of Map can use List<Integer> or List<String>
         // Would save from having to create the list from the map
+
         StringBuilder sbResult = new StringBuilder();
         int sumResult = 0;
+
 //        List<String> valueList = query.get("n");
-////        valueList = query.values();
+//        valueList = query.values();
 //        // Iterate to sum up the map
 //        for (int i = 0; i < valueList.size(); i++) {
 //            sumResult += Integer.parseInt(valueList.get(i));

@@ -38,6 +38,7 @@ public class MathController {
     public String calcArea(@RequestParam Map<String, String> contentMap) {
         // The controller should only be responsible for determining if it is a rectangle or circle
         // to the MathService
+
         // Switch Case based on what type we have
         switch (contentMap.get("type")) {
             case "circle":
