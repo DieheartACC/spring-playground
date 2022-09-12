@@ -1,7 +1,6 @@
 package com.galvanize.springplayground.flight;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -65,6 +64,21 @@ public class FlightController {
         flightArray.add(myFlight1);
 
         return flightArray;
+    }
+
+    @PostMapping("/flights/tickets/total")
+    public String postTicketInfoAndCalcTotal(@RequestBody TicketTotal tickets ) {
+        int totalPrice = 0;
+
+        for (int i = 0; i < tickets.getTickets().size(); i++) {
+            totalPrice += tickets.getTickets().get(i).getPrice();
+        }
+
+        return String.format("""
+                {
+                 "result": %d
+                }
+                 """, totalPrice);
     }
 
 }

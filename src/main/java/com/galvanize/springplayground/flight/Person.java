@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Person {
-    @JsonProperty("FirstName")
+//    @JsonProperty("FirstName")
     private String firstName;
-    @JsonProperty("LastName")
+//    @JsonProperty("LastName")
     private String lastName;
 
     public String getFirstName() {
