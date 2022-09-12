@@ -83,6 +83,7 @@ public class MathControllerTest {
                 .param("radius", "4");
 
         this.mvc.perform(request1)
+                //status().isCreated() is the more appropriate to use instead of Ok.
                 .andExpect(status().isOk())
                 .andExpect(content().string("Area of a circle with a radius of 4 is 50.26548"));
     }
@@ -96,6 +97,7 @@ public class MathControllerTest {
                 .param("height", "7");
 
         this.mvc.perform(request1)
+                //status().isCreated() is the more appropriate to use instead of Ok.
                 .andExpect(status().isOk())
                 .andExpect(content().string("Area of a 4x7 rectangle is 28"));
     }

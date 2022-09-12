@@ -42,11 +42,14 @@ public class MathController {
         // Switch Case based on what type we have
         switch (contentMap.get("type")) {
             case "circle":
+                if (contentMap.get("radius") == null)
+                    return "Invalid";
+
                 return myMathService.calcCircArea(Float.parseFloat(contentMap.get("radius")));
 
             case "rectangle":
                 if (contentMap.get("radius") != null) {
-                    return ("Invalid");
+                    return "Invalid";
                 }
 
                 else {
@@ -55,7 +58,7 @@ public class MathController {
                 }
 
             default:
-                return "";
+                return "Invalid";
         }
     }
 }
